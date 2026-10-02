@@ -2,8 +2,15 @@
 
 Base devcontainer image (`mcr.microsoft.com/devcontainers/java:25`) with JDK 25,
 Node.js 22 + Yarn, Chromium, Python 3, Ruby, Docker Compose, network tools
-(tcpdump, tshark), `glab`, `md-to-pdf` and the Claude CLI. The image is built from
+(tcpdump, tshark), `glab`, `md-to-pdf`, the Claude and Codex CLIs, PostgreSQL
+client, SSH server, cron, Neovim, `glow`, and `grpcurl`. The image is built from
 the [`Dockerfile`](Dockerfile) and published to the GitHub Container Registry.
+
+When the container's cron daemon is running, `/etc/cron.d/devcontainer-cli-updates`
+updates Claude Code and Codex daily at 04:00 in the system timezone. The job logs to
+`/var/log/devcontainer-cli-updates.log`; Claude is updated as `vscode`, while the
+global Codex installation is updated as root. The consuming devcontainer must
+start the cron daemon for the schedule to run.
 
 ## Pull the image
 

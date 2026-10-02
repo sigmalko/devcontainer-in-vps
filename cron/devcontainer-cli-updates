@@ -1,0 +1,4 @@
+# Daily updates for the Claude and Codex CLIs, run as root so npm can update the
+# global Codex installation. Claude is updated as vscode, its installation owner.
+# 04:00 leaves a one-hour gap after other daily CLI update jobs.
+0 4 * * * root /usr/local/sbin/update-devcontainer-cli-tools >> /var/log/devcontainer-cli-updates.log 2>&1
